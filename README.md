@@ -136,7 +136,7 @@ A análise foi dividida em **5 dimensões** complementares:
 ### ✅ Qualidade dos Dados
 - **82%** dos registros estão completos
 - Outliers extremos representam **8%** do dataset
-- Principais problemas: valores nulos em `codigo_justificativa` (8%)
+- Principais problemas: valores nulos em `codigo_justificativa` (100%)
 
 ### 📊 Padrões Identificados
 
@@ -160,13 +160,13 @@ A análise foi dividida em **5 dimensões** complementares:
 ## 👥 Equipe
 
 **Time de Data Science - Semana 1:**
-- DS1: [Nome] - Qualidade de Dados
-- DS2: [Nome] - Distribuições
-- DS3: [Nome] - Correlações
-- DS4: [Nome] - Sazonalidade
-- DS5: [Nome] - Segmentação
+- DS1: Helena Balbino - Qualidade de Dados
+- DS2: Ana Rachel R Costa - Distribuições
+- DS3: Ana Rachel R Costa - Correlações
+- DS4: Amélia Conti - Sazonalidade
+- DS5: Enoque Mandlate - Segmentação
 
-**Coordenação:** [Nome do Líder]
+**Coordenação:** Helena Balbino
 
 ---
 
@@ -187,8 +187,8 @@ A análise foi dividida em **5 dimensões** complementares:
 ## 📞 Contato
 
 Para dúvidas ou sugestões sobre o projeto:
-- Email: [email@example.com]
-- Repositório: [link do GitHub/GitLab]
+- Abra uma **GitHub Issue** no repositório
+- Repositório: []
 - Documentação completa: [link da wiki]
 
 ---
