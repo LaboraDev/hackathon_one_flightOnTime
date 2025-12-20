@@ -188,8 +188,8 @@ A análise foi dividida em **5 dimensões** complementares:
 
 Para dúvidas ou sugestões sobre o projeto:
 - Abra uma **GitHub Issue** no repositório
-- Repositório: []
-- Documentação completa: [link da wiki]
+- Repositório: [https://github.com/LaboraDev/hackathon_one_flightOnTime]
+- Documentação: Plataforma No Country - Hackathon (EDA Semana 1) 
 
 ---
 
