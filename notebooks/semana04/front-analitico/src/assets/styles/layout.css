@@ -1,0 +1,45 @@
+/* ===== APP BACKGROUND ===== */
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0028, #2b0036, #12001b);
+  color: #ffffff;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== MAIN ===== */
+main {
+  padding: 60px 80px;
+}
+
+/* ===== SECTION ===== */
+.section {
+  margin-top: 60px;
+}
+
+/* ===== CARD (Dashboard + Resultados) ===== */
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 25px 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== TITLES ===== */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff7a18, #ff3d81);
+  display: block;
+  margin-top: 8px;
+  border-radius: 4px;
+}
