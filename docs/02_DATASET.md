@@ -2,7 +2,7 @@
 
 ## 1. Fonte de Dados
 
-O dataset utilizado para o treinamento do modelo preditivo do **FlyOnTime** foi construído a partir do **VRA (Voos Regulares Ativos)**, base oficial disponibilizada pela **ANAC (Agência Nacional de Aviação Civil Brasileira)**, contemplando o período de **janeiro/2021 até dezembro/2024**. A escolha por uma fonte institucional e padronizada garante maior confiabilidade e consistência dos dados, além de permitir que as análises reflitam com precisão o comportamento real das operações aéreas no Brasil.
+O dataset utilizado para o treinamento do modelo preditivo do **[FlightOnTime](https://github.com/LaboraDev/hackathon_one_flightOnTime/tree/main)** foi construído a partir do **VRA (Voos Regulares Ativos)**, base oficial disponibilizada pela **[ANAC](https://www.gov.br/anac/pt-br/acesso-a-informacao/dados-abertos/areas-de-atuacao/voos-e-operacoes-aereas/voo-regular-ativo-vra) (Agência Nacional de Aviação Civil Brasileira)**, contemplando o período de **janeiro/2021 até dezembro/2024**. A escolha por uma fonte institucional e padronizada garante maior confiabilidade e consistência dos dados, além de permitir que as análises reflitam com precisão o comportamento real das operações aéreas no Brasil.
 
 Por se tratar de um conjunto de informações originado diretamente de registros regulatórios, o VRA oferece rastreabilidade completa das operações, cobrindo variáveis essenciais como identificação do voo, aeroportos de origem e destino, companhias aéreas e características operacionais relevantes para a previsão de atrasos. Isso permite que o modelo seja treinado com base em um cenário aderente ao ambiente produtivo, reduzindo vieses de amostras artificiais e aumentando o potencial de generalização das previsões.
 
@@ -21,15 +21,16 @@ O dataset original foi composto por colunas operacionais e de registro de evento
 - Partida e chegada real
 - Situação do voo e justificativas de ocorrência
 
-A padronização e consistência de nomes foram tratadas no pipeline.
+A padronização e consistência de nomes foram tratadas no [pipeline](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb).
 
 ---
 
 ## 3. Higienização e Qualidade dos Dados
 
-Uma etapa essencial do projeto foi garantir que apenas registros válidos fossem utilizados na criação do target e no treinamento do modelo.
+Uma etapa essencial do projeto foi garantir que apenas registros válidos fossem utilizados na criação do target[In[6]](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana_05/Consolidado_S03_splitTemporal.ipynb) e no treinamento do modelo.
 
 ### Flags de qualidade
+
 Foram criadas flags para classificação de registros inconsistentes:
 
 - `flag_partida_prevista_ausente`
@@ -52,11 +53,11 @@ A variável target foi definida como:
 
 ### Critério internacional de pontualidade (regra dos 15 minutos)
 
-Para alinhar o FlyOnTime a práticas amplamente utilizadas na indústria da aviação, foi adotada a definição operacional baseada no conceito de **On-Time Performance (OTP)**, em que um voo é considerado **pontual** quando a diferença entre o horário real de partida e o horário programado permanece dentro de uma janela de tolerância de até **15 minutos**.
+Para alinhar o FlyOnTime a práticas amplamente utilizadas na indústria da aviação, foi adotada a definição operacional baseada no conceito de **[On-Time Performance (OTP)](https://www.cirium.com/resources/on-time-performance/on-time-performance-faq/)**, em que um voo é considerado **pontual** quando a diferença entre o horário real de partida e o horário programado permanece dentro de uma janela de tolerância de até **15 minutos**.
 
 De forma prática, o atraso é reconhecido apenas quando a operação ultrapassa esse limite. Isso reflete o entendimento de que **pequenos desvios** (por exemplo, variações de alguns minutos) são inerentes à operação aérea e podem ocorrer por fatores normais como fluxo de embarque, ajustes de solo, ocupação de gate, pushback e pequenas variações de tráfego, sendo tratados como **variações operacionais aceitáveis** e não como impacto relevante ao passageiro ou à performance operacional.
 
-Esse critério é amplamente reportado em rankings e métricas do setor, nos quais um voo é considerado “on-time” quando **parte ou chega dentro de 15 minutos do horário programado**. 
+Esse critério é amplamente reportado em rankings e métricas do setor, nos quais um voo é considerado “on-time” quando **parte ou chega dentro de 15 minutos do horário programado**.
 
 ### Regra de definição do target
 
@@ -69,7 +70,7 @@ Esse critério é amplamente reportado em rankings e métricas do setor, nos qua
 
 A variável target foi definida a partir do **atraso de partida em minutos** e posteriormente convertida para uma classificação binária (`0` ou `1`), permitindo o enquadramento do problema como **classificação supervisionada**.
 
-#### 1) Cálculo do atraso de partida (em minutos)
+#### 1 Cálculo do atraso de partida (em minutos)
 
 O atraso de partida é calculado por:
 
@@ -80,7 +81,7 @@ onde:
 - `partida_prevista`: horário programado de partida (agendado)
 - `partida_real`: horário efetivo de partida (real)
 
-#### 2) Classificação binária do atraso (target final)
+#### 2 Classificação binária do atraso (target final)
 
 Com base no valor calculado em `atraso_partida_min`, o target final foi definido como:
 
@@ -104,11 +105,11 @@ Esse dataset é a base para a etapa de engenharia de variáveis, modelagem e val
 
 ## 6. Considerações de Governança
 
-O dataset do **FlyOnTime** foi construído com foco em **governança, confiabilidade e conformidade**, assegurando que todo o pipeline de dados e modelagem permaneça rastreável, consistente e apropriado para uso em um contexto real de operação aérea.
+O dataset do **[FlightOnTime](https://github.com/LaboraDev/hackathon_one_flightOnTime/tree/main)** foi construído com foco em **governança, confiabilidade e conformidade**, assegurando que todo o [pipeline](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb) de dados e modelagem permaneça rastreável, consistente e apropriado para uso em um contexto real de operação aérea.
 
 ### Dados públicos e conformidade com a LGPD
 
-O dataset é composto exclusivamente por **metadados operacionais** de aeronaves, voos e aeroportos extraídos de fontes públicas oficiais, não havendo, em nenhum momento, coleta, armazenamento ou processamento de dados pessoais de passageiros. Dessa forma, o projeto mantém alinhamento com os princípios de privacidade e segurança da informação, garantindo conformidade com a Lei Geral de Proteção de Dados (LGPD).
+O dataset é composto exclusivamente por **metadados operacionais** de aeronaves, voos e aeroportos extraídos de fontes públicas oficiais, não havendo, em nenhum momento, coleta, armazenamento ou processamento de dados pessoais de passageiros. Dessa forma, o projeto mantém alinhamento com os princípios de privacidade e segurança da informação, garantindo conformidade com a Lei Geral de Proteção de Dados ([LGPD](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm)).
 
 ### Princípios adotados no pipeline de dados
 

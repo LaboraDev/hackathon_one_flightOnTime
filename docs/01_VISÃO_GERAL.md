@@ -1,10 +1,10 @@
-# 01 — Visão Geral do Projeto 
+# 01 — Visão Geral do Projeto
 
 ## 1. Contexto e Motivação
 
 A previsibilidade de atrasos em voos é um tema crítico tanto para passageiros quanto para companhias aéreas. Atrasos impactam diretamente a experiência do usuário final, custos operacionais, replanejamento logístico, utilização de slots aeroportuários e eficiência do uso de aeronaves.
 
-O projeto **FlyOnTime** foi desenvolvido como uma solução preditiva baseada em dados históricos para estimar, com antecedência, a probabilidade de um voo **atrasar** no momento de partida.
+O projeto **[FlightOnTime](https://github.com/LaboraDev/hackathon_one_flightOnTime/tree/main)** foi desenvolvido como uma solução preditiva baseada em dados históricos para estimar, com antecedência, a probabilidade de um voo **atrasar** no momento de partida.
 
 ---
 
@@ -44,3 +44,4 @@ API Python (FastAPI + ML Pipeline)
     |
     v
 Predição + Explicabilidade (Local / Global)
+```
