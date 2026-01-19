@@ -4,16 +4,16 @@
 
 ## 1. Objetivo
 
-O **Feature Engineering** do FlyOnTime foi estruturado com o objetivo de transformar dados operacionais brutos em variáveis com maior poder explicativo e capacidade preditiva, permitindo que o modelo identifique padrões reais associados ao risco de atraso. Essa etapa é fundamental para garantir que a predição seja baseada em sinais consistentes do ponto de vista estatístico e relevantes do ponto de vista operacional, refletindo com fidelidade a dinâmica do transporte aéreo.
+O **Feature Engineering** do FlyOnTime foi estruturado com o objetivo de transformar dados operacionais brutos em variáveis com maior poder explicativo e capacidade preditiva, permitindo que o modelo identifique padrões reais associados ao risco de atraso. Essa etapa é fundamental para garantir que a predição seja baseada em sinais consistentes do ponto de vista estatístico e relevantes do ponto de vista operacional, refletindo com fidelidade a dinâmica do transporte aéreo. Todas as Feature Engineering estão disponíveis no [pipeline](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
 
 A estratégia de engenharia de variáveis foi desenhada para maximizar a **capacidade preditiva** e a **estabilidade temporal**, reduzindo sensibilidade a ruídos e flutuações pontuais. Para isso, as features foram construídas priorizando sinais que permanecem úteis ao longo do tempo e que fazem sentido em cenários reais de uso, como padrões de demanda ao longo do dia, sazonalidade, recorrência de atrasos por empresa e efeitos estruturais relacionados a aeroportos com maior complexidade operacional.
 
 Em termos práticos, o conjunto de features foi desenvolvido para capturar os seguintes eixos de informação:
 
-- **Sazonalidade e padrões temporais**, incorporando variações por dia da semana, mês, período do ano e horários com maior probabilidade de congestionamento operacional.
-- **Comportamento histórico por companhia e aeroportos**, refletindo tendências recorrentes de performance e fatores associados à execução da malha aérea.
-- **Efeitos cíclicos associados ao horário**, considerando que determinadas faixas horárias tendem a concentrar maior volume de operações, conexões e atrasos encadeados.
-- **Características estruturais de hubs**, representando a complexidade operacional em aeroportos de grande movimentação e maior probabilidade de dependências logísticas.
+- **Sazonalidade e padrões temporais**, incorporando variações por dia da semana, mês, período do ano e horários com maior probabilidade de congestionamento operacional. [In[42-44](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
+- **Comportamento histórico por companhia e aeroportos**, refletindo tendências recorrentes de performance e fatores associados à execução da malha aérea.[In[45](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
+- **Efeitos cíclicos associados ao horário**, considerando que determinadas faixas horárias tendem a concentrar maior volume de operações, conexões e atrasos encadeados.[In[40](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
+- **Características estruturais de hubs**, representando a complexidade operacional em aeroportos de grande movimentação e maior probabilidade de dependências logísticas.[In[56](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
 
 Além disso, o design das features seguiu princípios corporativos essenciais para garantir uso seguro e sustentável em produção:
 
@@ -62,7 +62,7 @@ Para capturar comportamento histórico, foram criadas médias por categoria:
 
 ### Estratégia de Treino e Produção
 
-As métricas agregadas utilizadas como features (ex.: médias históricas de atraso por companhia e aeroportos) são calculadas exclusivamente a partir do conjunto de treino e posteriormente reaplicadas nos conjuntos de validação, teste e no ambiente de produção. Essa abordagem garante consistência metodológica e evita que o modelo tenha acesso indireto a informações do futuro durante o treinamento, preservando a integridade do processo de modelagem.
+As métricas agregadas utilizadas como features (ex.: médias históricas de atraso por companhia e aeroportos[In[46 e 50](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)) são calculadas exclusivamente a partir do conjunto de treino e posteriormente reaplicadas nos conjuntos de validação, teste e no ambiente de produção. Essa abordagem garante consistência metodológica e evita que o modelo tenha acesso indireto a informações do futuro durante o treinamento, preservando a integridade do processo de modelagem.
 
 Como essas features dependem de chaves categóricas (por exemplo, `empresa_aerea`, `aerodromo_origem` e `aerodromo_destino`), é esperado que em produção ocorram cenários onde uma categoria não tenha sido observada anteriormente no conjunto de treino, como:
 
@@ -82,7 +82,7 @@ O horário de partida (`hora_dia`) é uma variável naturalmente periódica, poi
 
 Se utilizarmos apenas a variável linear `hora_dia` (0 a 23), o modelo pode interpretar incorretamente que existe uma grande distância entre 23 e 0, o que introduz uma descontinuidade artificial. Esse efeito pode reduzir a capacidade do modelo de capturar padrões operacionais reais que ocorrem em faixas específicas do dia, como picos de tráfego, restrições de slot, acúmulo de atrasos e efeitos de rotatividade de aeronaves.
 
-Para corrigir essa limitação e representar corretamente a natureza circular do tempo, foi implementada uma **codificação cíclica** baseada em transformações trigonométricas, convertendo o horário para um espaço contínuo no plano (circunferência).
+Para corrigir essa limitação e representar corretamente a natureza circular do tempo, foi implementada uma **codificação cíclica** baseada em transformações trigonométricas, convertendo o horário para um espaço contínuo no plano (circunferência).[In[38-40](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
 
 Dessa forma, foram criadas as seguintes features:
 
@@ -115,7 +115,7 @@ Em resumo, as variáveis `hora_sin` e `hora_cos` introduzem um componente de mod
 
 Foi criada a feature binária:
 
-- `is_hub`
+- `is_hub` [In[9](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana03/Consolidado_S03_splitTemporal.ipynb)
 
 Essa variável indica se o voo está associado a um **aeroporto estrategicamente relevante (hub)**, considerando tanto o aeroporto de origem quanto o de destino. Na prática, essa feature captura um sinal estrutural importante da malha aérea: operações envolvendo hubs tendem a apresentar dinâmica operacional distinta quando comparadas a aeroportos regionais ou de baixa densidade.
 
@@ -153,7 +153,7 @@ Dessa forma, a flag `is_hub` atua como um reforço estrutural ao modelo, permiti
 
 ## 6. Proteção contra Leakage e Colunas Não Elegíveis
 
-Para garantir que o FlyOnTime opere de forma **confiável em produção** e mantenha integridade metodológica no treinamento, foi implementada uma etapa explícita de **proteção contra data leakage** e exclusão de colunas **não elegíveis para inferência**.
+Para garantir que o FlyOnTime opere de forma **confiável em produção** e mantenha integridade metodológica no treinamento, foi implementada uma etapa explícita de **proteção contra data leakage** e exclusão de colunas **não elegíveis para inferência**.[In[12](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana_05/Consolidado_S03_splitTemporal.ipynb)
 
 Em projetos de Machine Learning aplicados a cenários operacionais, é comum que o dataset histórico contenha variáveis que, apesar de úteis para análise retrospectiva, não estão disponíveis no momento da predição (antes do voo acontecer) ou carregam informações que introduzem vazamento indireto do target. Caso essas colunas sejam utilizadas no treinamento, o modelo pode aparentar alta performance offline, mas apresentará degradação significativa quando implantado, pois estará aprendendo padrões impossíveis de serem reproduzidos em tempo real.
 
@@ -174,3 +174,4 @@ A aplicação desse controle reduz o risco de discrepância entre treino e produ
 - a solução seja mais resiliente a mudanças no pipeline, no preenchimento dos dados e em variações de origem do input
 
 Em resumo, essa etapa atua como um mecanismo essencial de **governança de dados e confiabilidade de inferência**, reduzindo riscos de overfitting indireto e garantindo que o FlyOnTime seja sustentável como produto preditivo em ambiente real.
+
