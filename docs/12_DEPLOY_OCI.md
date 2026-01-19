@@ -113,9 +113,8 @@ Para uma fase futura (Pós-Hackathon), recomenda-se a implementação de um API 
 
 ---
 
-Esse conteúdo já está pronto para ser colado no seu **README.md** do GitHub 🚀.  
 
-Quer que eu também monte uma **seção inicial com badges e instruções rápidas** (exemplo: status do build, versão Docker, etc.) para deixar o README mais profissional?
+
 
 
 
