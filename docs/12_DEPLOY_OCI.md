@@ -86,9 +86,11 @@ docker tag flyontime/python-api <region-key>.ocir.io/<namespace>/flyontime/pytho
 docker push <region-key>.ocir.io/<namespace>/flyontime/java-backend:1.0.0
 docker push <region-key>.ocir.io/<namespace>/flyontime/python-api:1.0.0
 
-Envio para OCI:
+# Envio para OCI:
 docker push <region-key>.ocir.io/<namespace>/flyontime/java-backend:1.0.0
 docker push <region-key>.ocir.io/<namespace>/flyontime/python-api:1.0.0
+```
+
 6.2 Provisionamento (Container Instances)
 A execução será feita via OCI Container Instances, configurando:
 - Shape: Mínimo de 1 OCPU e 2GB RAM para a API Python.
@@ -114,5 +116,6 @@ Para uma fase futura (Pós-Hackathon), recomenda-se a implementação de um API 
 Esse conteúdo já está pronto para ser colado no seu **README.md** do GitHub 🚀.  
 
 Quer que eu também monte uma **seção inicial com badges e instruções rápidas** (exemplo: status do build, versão Docker, etc.) para deixar o README mais profissional?
+
 
 
