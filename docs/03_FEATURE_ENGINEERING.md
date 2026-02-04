@@ -10,7 +10,7 @@ A estratégia de engenharia de variáveis foi desenhada para maximizar a **capac
 
 Em termos práticos, o conjunto de features foi desenvolvido para capturar os seguintes eixos de informação:
 
-- **Sazonalidade e padrões temporais**, incorporando variações por dia da semana, mês, período do ano e horários com maior probabilidade de congestionamento operacional. [In[42-44](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
+- **Sazonalidade e padrões temporais**, incorporando variações por dia da semana, mês, período do ano e horários com maior probabilidade de congestionamento operacional. [In[42-44](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)]
 - **Comportamento histórico por companhia e aeroportos**, refletindo tendências recorrentes de performance e fatores associados à execução da malha aérea.[In[45](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
 - **Efeitos cíclicos associados ao horário**, considerando que determinadas faixas horárias tendem a concentrar maior volume de operações, conexões e atrasos encadeados.[In[40](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
 - **Características estruturais de hubs**, representando a complexidade operacional em aeroportos de grande movimentação e maior probabilidade de dependências logísticas.[In[56](https://github.com/LaboraDev/hackathon_one_flightOnTime/blob/main/notebooks/semana01/S01_Consolidado_ETL_EDA.ipynb)
@@ -174,4 +174,5 @@ A aplicação desse controle reduz o risco de discrepância entre treino e produ
 - a solução seja mais resiliente a mudanças no pipeline, no preenchimento dos dados e em variações de origem do input
 
 Em resumo, essa etapa atua como um mecanismo essencial de **governança de dados e confiabilidade de inferência**, reduzindo riscos de overfitting indireto e garantindo que o FlyOnTime seja sustentável como produto preditivo em ambiente real.
+
 
